@@ -24,20 +24,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const authenticateUser = async () => {
-      // if (telegramLoading) return;
+      if (telegramLoading) return;
 
-      // if (!telegramUser) {
-      //   setIsLoading(false);
-      //   return;
-      // }
+      if (!telegramUser) {
+        setIsLoading(false);
+        return;
+      }
       try {
         // Check if user is allowed by admin
         const response = await apiClient.post('/api/auth/telegram', {
-          // telegramId: telegramUser.id,
-          // telegramUsername: telegramUser.username,
-          // fullName: `${telegramUser.first_name} ${telegramUser.last_name || ''}`.trim(),
+          telegramId: telegramUser.id,
+          telegramUsername: telegramUser.username,
+          fullName: `${telegramUser.first_name} ${telegramUser.last_name || ''}`.trim(),
           // telegramId: 7386934803,
-          telegramId: 8091793606,
+          // telegramId: 8091793606,
         });
 
         if (response.user) {

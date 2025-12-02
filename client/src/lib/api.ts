@@ -1,24 +1,24 @@
 import axios from "axios";
 // Create axios instance with default config
 const api = axios.create({
-  // baseURL: import.meta.env.VITE_API_URL || "https://kasha-inexplosive-chokingly.ngrok-free.dev",
-  baseURL: import.meta.env.VITE_API_URL || "localhost:5000",
+  baseURL: import.meta.env.VITE_API_URL || "https://hivelike-maurita-undefectively.ngrok-free.dev",
+  // baseURL: import.meta.env.VITE_API_URL || "localhost:5000",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 // Bypass ngrok browser warning page for GET requests in WebView/Browser
-// api.interceptors.request.use((config) => {
-//   try {
-//     const base = config.baseURL || api.defaults.baseURL || "";
-//     if (base.includes("ngrok-free") || base.includes("ngrok.io")) {
-//       config.headers = config.headers || {};
-//       (config.headers as any)["ngrok-skip-browser-warning"] = "true";
-//     }
-//   } catch { }
-//   return config;
-// });
+api.interceptors.request.use((config) => {
+  try {
+    const base = config.baseURL || api.defaults.baseURL || "";
+    if (base.includes("ngrok-free") || base.includes("ngrok.io")) {
+      config.headers = config.headers || {};
+      (config.headers as any)["ngrok-skip-browser-warning"] = "true";
+    }
+  } catch { }
+  return config;
+});
 
 // API helper functions for making requests
 export const apiClient = {
