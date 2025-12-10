@@ -179,29 +179,29 @@ export default function Schedule() {
       try {
         // Fetch schedule
         const scheduleResponse = await apiClient.get("/api/auto-bid-schedule", { telegramId: telegramUser.id });
-        if (scheduleResponse?.data?.success) {
+            if (scheduleResponse?.data?.success) {
           setSchedule(scheduleResponse.data);
           // Populate form with existing data
-          setIsActive(scheduleResponse.data.isActive);
-          setSelectedDays(scheduleResponse.data.daysOfWeek || []);
-          setTimeStart(scheduleResponse.data.timeRangeStart || "09:00");
-          setTimeEnd(scheduleResponse.data.timeRangeEnd || "18:00");
-          setStartDate(scheduleResponse.data.startDate || "");
-          setEndDate(scheduleResponse.data.endDate || "");
-          setProjectType(scheduleResponse.data.projectType || "default");
-          setPreferredRoles(scheduleResponse.data.preferredRoles || []);
+          setIsActive(scheduleResponse.data.schedule.isActive);
+          setSelectedDays(scheduleResponse.data.schedule.daysOfWeek || []);
+          setTimeStart(scheduleResponse.data.schedule.timeRangeStart || "09:00");
+          setTimeEnd(scheduleResponse.data.schedule.timeRangeEnd || "18:00");
+          setStartDate(scheduleResponse.data.schedule.startDate || "");
+          setEndDate(scheduleResponse.data.schedule.endDate || "");
+          setProjectType(scheduleResponse.data.schedule.projectType || "default");
+          setPreferredRoles(scheduleResponse.data.schedule.preferredRoles || []);
           // Fixed budget
-          setFixedBudgetLevel(scheduleResponse.data.fixedBudgetLevel || "low");
-          setFixedBudgetMin(scheduleResponse.data.fixedBudgetMin?.toString() || "");
-          setFixedBudgetMax(scheduleResponse.data.fixedBudgetMax?.toString() || "");
+          setFixedBudgetLevel(scheduleResponse.data.schedule.fixedBudgetLevel || "low");
+          setFixedBudgetMin(scheduleResponse.data.schedule.fixedBudgetMin?.toString() || "");
+          setFixedBudgetMax(scheduleResponse.data.schedule.fixedBudgetMax?.toString() || "");
           // Hourly budget
-          setHourlyBudgetLevel(scheduleResponse.data.hourlyBudgetLevel || "low");
-          setHourlyBudgetMin(scheduleResponse.data.hourlyBudgetMin?.toString() || "");
-          setHourlyBudgetMax(scheduleResponse.data.hourlyBudgetMax?.toString() || "");
+          setHourlyBudgetLevel(scheduleResponse.data.schedule.hourlyBudgetLevel || "low");
+          setHourlyBudgetMin(scheduleResponse.data.schedule.hourlyBudgetMin?.toString() || "");
+          setHourlyBudgetMax(scheduleResponse.data.schedule.hourlyBudgetMax?.toString() || "");
           // Client budget
-          setClientBudgetPreference(scheduleResponse.data.clientBudgetPreference || "low");
-          setPreferredHourlyBudget(scheduleResponse.data.preferredHourlyBudget?.toString() || "2000");
-          setHoursLimit(scheduleResponse.data.hoursLimit?.toString() || "35");
+          setClientBudgetPreference(scheduleResponse.data.schedule.clientBudgetPreference || "low");
+          setPreferredHourlyBudget(scheduleResponse.data.schedule.preferredHourlyBudget?.toString() || "2000");
+          setHoursLimit(scheduleResponse.data.schedule.hoursLimit?.toString() || "35");
         }
 
         // Fetch OpenAI key status
