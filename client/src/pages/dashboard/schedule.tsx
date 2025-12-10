@@ -204,6 +204,8 @@ export default function Schedule() {
           setHoursLimit(scheduleResponse.data.schedule.hoursLimit?.toString() || "35");
         }
 
+        console.log(schedule, 'schedule');
+
         // Fetch OpenAI key status
         try {
           const keyResponse = await apiClient.get("/api/cw-profiles/get-openai-key", { telegramId: telegramUser.id });
