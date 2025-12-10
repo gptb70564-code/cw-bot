@@ -179,7 +179,7 @@ export default function Schedule() {
       try {
         // Fetch schedule
         const scheduleResponse = await apiClient.get("/api/auto-bid-schedule", { telegramId: telegramUser.id });
-        if (scheduleResponse?.success) {
+        if (scheduleResponse?.data?.success) {
           setSchedule(scheduleResponse.data);
           // Populate form with existing data
           setIsActive(scheduleResponse.data.isActive);
