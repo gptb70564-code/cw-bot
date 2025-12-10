@@ -26,10 +26,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const authenticateUser = async () => {
       if (telegramLoading) return;
 
-      if (!telegramUser) {
-        setIsLoading(false);
-        return;
-      }
+      //if (!telegramUser) {
+      //  setIsLoading(false);
+     //   return;
+     // }
       try {
         // Check if user is allowed by admin
         const response = await apiClient.post('/api/auth/telegram', {
