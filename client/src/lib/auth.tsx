@@ -28,9 +28,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (!telegramUser) {
        setIsLoading(false);
-       // return;
+       return;
      }
       try {
+          console.log('1');
         // Check if user is allowed by admin
         const response = await apiClient.post('/api/auth/telegram', {
           telegramId: telegramUser.id,
@@ -39,6 +40,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           // telegramId: 7386934803,
           // telegramId: 8091793606,
         });
+
+        console.log(response, 'response');
 
         if (response.user) {
           setUser(response.user);
